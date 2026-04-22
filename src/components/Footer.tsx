@@ -9,7 +9,7 @@ const COLUMNS: Column[] = [
   },
   {
     heading: 'Contact',
-    items: ['Support', 'Partnerships', 'Press', 'Careers'],
+    items: ['About', 'Work with us', 'Privacy Policy', 'Terms of Service'],
   },
   {
     heading: 'Socials',
@@ -23,18 +23,20 @@ export const Footer: FC = () => (
       <div className="footer__columns">
         {COLUMNS.map((c) => (
           <div key={c.heading} className="footer__col">
-            <h4>{c.heading}</h4>
+            <h4 className="footer__col-heading">{c.heading}</h4>
             <ul>
               {c.items.map((i) => (
-                <li key={i}>{i}</li>
+                <li key={i}><a href="#">{i}</a></li>
               ))}
             </ul>
           </div>
         ))}
-        <div className="footer__col" aria-hidden="true" />
       </div>
-      <div className="footer__banner">
-        <h2>Chorezen</h2>
+      <div className="footer__wordmark">
+        <div className="footer__wordmark-icon">
+          <span>🫧</span>
+        </div>
+        <span className="footer__wordmark-text">Chorezen</span>
       </div>
       <div className="footer__meta">
         <span>&copy;2026 Chorezen Ltd</span>

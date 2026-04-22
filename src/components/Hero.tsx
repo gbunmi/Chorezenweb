@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Illustration } from './Illustration';
+import heroIllustration from '../assets/hero-illustration.svg';
 
 export const Hero: FC = () => (
   <section className="hero" id="top">
@@ -15,19 +15,17 @@ export const Hero: FC = () => (
         brand new.
       </p>
       <div className="hero__ctas">
-        <button className="btn btn-primary" type="button">
+        <button className="btn btn-primary btn-sm" type="button">
           Book now
         </button>
-        <button className="btn btn-ghost" type="button">
+        <button className="btn btn-ghost btn-sm" type="button">
           Contact us
         </button>
       </div>
     </div>
 
     <div className="hero__scene">
-      <Illustration name="hero-plant-left" className="hero__plants hero__plants--left" />
-      <Illustration name="hero-plant-right" className="hero__plants hero__plants--right" />
-      <Illustration name="hero" className="hero__scene-art" />
+      <img src={heroIllustration} alt="Cleaner tidying a living room" className="hero__scene-art" />
     </div>
   </section>
 );

@@ -1,5 +1,8 @@
 import type { FC } from 'react';
 import { Illustration } from './Illustration';
+import extraTasksSvg from '../assets/extra-tasks.svg';
+import standardCleaningSvg from '../assets/standard-cleaning.svg';
+import moveinCleaningSvg from '../assets/movein-cleaning.svg';
 
 type Product = {
   id: 'standard' | 'movein' | 'extra';
@@ -36,12 +39,21 @@ export const Products: FC = () => (
       <div className="products__grid">
         {PRODUCTS.map((p) => (
           <article key={p.id} className="product-card">
-            <h3 className="product-card__title">{p.title}</h3>
-            <p className="product-card__desc">{p.desc}</p>
-            <button className="btn btn-primary btn-sm product-card__cta" type="button">
-              Book now
-            </button>
-            <Illustration name={p.art} className="product-card__art" />
+            <div className="product-card__body">
+              <h3 className="product-card__title">{p.title}</h3>
+              <p className="product-card__desc">{p.desc}</p>
+              <button className="btn btn-primary btn-sm product-card__cta" type="button">
+                Book now
+              </button>
+            </div>
+            <div className="product-card__art-wrap">
+              {p.id === 'extra'
+                ? <img src={extraTasksSvg} alt="Extra tasks" className="product-card__art" />
+                : p.id === 'standard'
+                ? <img src={standardCleaningSvg} alt="Standard cleaning" className="product-card__art" />
+                : <img src={moveinCleaningSvg} alt="Move-in cleaning" className="product-card__art" />
+              }
+            </div>
           </article>
         ))}
       </div>

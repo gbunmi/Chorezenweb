@@ -1,4 +1,5 @@
 import { useEffect, useState, type FC } from 'react';
+import chorezenLogo from '../assets/chorezen-logo.png';
 
 export const Nav: FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -14,15 +15,9 @@ export const Nav: FC = () => {
     <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className="nav__inner">
         <a className="nav__logo" href="#top">
-          <span className="nav__dot" aria-hidden="true" />
-          Chorezen
+          <img src={chorezenLogo} alt="Chorezen" className="nav__logo-img" />
         </a>
-        <nav className="nav__links" aria-label="Primary">
-          <a href="#products">Services</a>
-          <a href="#how">How it works</a>
-          <a href="#testimonials">Reviews</a>
-        </nav>
-        <button className="btn btn-primary btn-sm" type="button">
+<button className="btn btn-primary btn-sm" type="button">
           Book now
         </button>
       </div>

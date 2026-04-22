@@ -36,17 +36,6 @@ export const HowItWorks: FC = () => (
           </div>
         ))}
       </div>
-      <div className="how__showcase">
-        <Illustration name="how-showcase">
-          <div className="how__showcase-copy">
-            <h3>A booking flow built for real life.</h3>
-            <p>
-              From tap to clean in minutes. No forms. No waiting. Just a message, a confirmation,
-              and a cleaner at your door.
-            </p>
-          </div>
-        </Illustration>
-      </div>
     </div>
   </section>
 );
