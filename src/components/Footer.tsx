@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import footerWordmark from '../assets/footer-wordmark.png';
 
 type Column = { heading: string; items: string[] };
 
@@ -19,7 +20,7 @@ const COLUMNS: Column[] = [
 
 export const Footer: FC = () => (
   <footer className="footer">
-    <div className="footer__inner">
+    <div className="footer__panel">
       <div className="footer__columns">
         {COLUMNS.map((c) => (
           <div key={c.heading} className="footer__col">
@@ -32,15 +33,12 @@ export const Footer: FC = () => (
           </div>
         ))}
       </div>
-      <div className="footer__wordmark">
-        <div className="footer__wordmark-icon">
-          <span>🫧</span>
+      <div className="footer__bottom">
+        <img src={footerWordmark} alt="Chorezen" className="footer__wordmark-img" />
+        <div className="footer__meta">
+          <span>©2026 Chorezen Ltd</span>
+          <span>...</span>
         </div>
-        <span className="footer__wordmark-text">Chorezen</span>
-      </div>
-      <div className="footer__meta">
-        <span>&copy;2026 Chorezen Ltd</span>
-        <span>&middot; &middot; &middot;</span>
       </div>
     </div>
   </footer>
