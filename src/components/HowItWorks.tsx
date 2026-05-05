@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { Illustration } from './Illustration';
 
 type Step = { n: string; title: string; desc: string };
 

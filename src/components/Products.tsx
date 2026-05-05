@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-import { Illustration } from './Illustration';
 import extraTasksSvg from '../assets/extra-tasks.svg';
 import standardCleaningSvg from '../assets/standard-cleaning.svg';
 import moveinCleaningSvg from '../assets/movein-cleaning.svg';
