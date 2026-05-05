@@ -281,10 +281,7 @@ a {
   display: flex;
   flex-direction: column;
 }
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(42, 14, 0, 0.08);
-}
+/* Hover/tilt handled via JS in ProductCard */
 .product-card__title {
   font-family: var(--font-body);
   font-weight: 700;
@@ -657,6 +654,88 @@ a {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/* ============================================================
+   Interactions
+   ============================================================ */
+
+/* Smooth scroll for all anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* — Scroll progress bar — */
+.nav__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--orange);
+  transition: width 80ms linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* — Button ripple on click — */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: inherit;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+.btn:active::after {
+  animation: btnRipple 420ms ease-out forwards;
+}
+@keyframes btnRipple {
+  0%   { transform: scale(0); opacity: 1; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+/* — Ghost button ripple uses a darker tint — */
+.btn-ghost::after {
+  background: rgba(42, 14, 0, 0.08);
+}
+
+/* — Step number highlights on card hover — */
+.step {
+  transition: background 220ms ease;
+}
+.step:hover {
+  background: rgba(249, 95, 19, 0.06);
+}
+.step__num {
+  transition: background 220ms ease, color 220ms ease, box-shadow 220ms ease;
+}
+.step:hover .step__num {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 0 0 6px rgba(249, 95, 19, 0.18);
+}
+
+/* — Nav link underline animation — */
+.nav__links a {
+  position: relative;
+}
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--orange);
+  transition: width 200ms ease;
+}
+.nav__links a:hover::after {
+  width: 100%;
 }
 
 /* ============================================================
