@@ -688,14 +688,6 @@ a {
   animation: heroSceneIn 1s 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* — Gentle float on the hero illustration — */
-@keyframes floatArt {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-18px); }
-}
-.hero__scene-art {
-  animation: floatArt 7s 1.8s ease-in-out infinite;
-}
 
 /* — Scroll reveal: slide + fade — */
 .reveal {
@@ -755,7 +747,6 @@ a {
   .hero__lede,
   .hero__ctas,
   .hero__scene,
-  .hero__scene-art,
   .cta .btn-primary {
     animation: none;
   }
