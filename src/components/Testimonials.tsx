@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useInView } from '../hooks/useInView';
 
 type Testimonial = {
   stars: number;
@@ -20,7 +21,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     stars: 5,
     quote:
-      'Booked on a Friday night and had someone at my door Saturday morning. The flat has never looked this good. Easily the smoothest cleaning service I\u2019ve ever used.',
+      'Booked on a Friday night and had someone at my door Saturday morning. The flat has never looked this good. Easily the smoothest cleaning service I’ve ever used.',
     name: 'Amaka',
     emoji: '\u{1F60A}',
     variant: 'b',
@@ -28,7 +29,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     stars: 5,
     quote:
-      'Moved into a new place and the previous tenants left it rough. Chorezen turned it around in one afternoon. Spotless. I\u2019m already booking them again next month.',
+      'Moved into a new place and the previous tenants left it rough. Chorezen turned it around in one afternoon. Spotless. I’m already booking them again next month.',
     name: 'Tobi',
     emoji: '\u{1F929}',
     variant: 'c',
@@ -52,32 +53,44 @@ const Star: FC = () => (
   </svg>
 );
 
-export const Testimonials: FC = () => (
-  <section className="testimonials section" id="testimonials">
-    <div className="container">
-      <h2 className="display testimonials__title">Loved by people who use us</h2>
-      <div className="testimonials__row">
-        {TESTIMONIALS.map((t, i) => (
-          <article key={i} className={`tcard tcard--${t.variant}`}>
-            <div>
-              <div className="tcard__stars" aria-label={`${t.stars} out of 5 stars`}>
-                {Array.from({ length: t.stars }).map((_, k) => (
-                  <Star key={k} />
-                ))}
-              </div>
-              <p className="tcard__quote">{t.quote}</p>
+export const Testimonials: FC = () => {
+  const [ref, inView] = useInView<HTMLElement>();
+
+  return (
+    <section className="testimonials section" id="testimonials" ref={ref}>
+      <div className="container">
+        <h2 className={`display testimonials__title reveal${inView ? ' in-view' : ''}`}>
+          Loved by people who use us
+        </h2>
+        <div className="testimonials__row">
+          {TESTIMONIALS.map((t, i) => (
+            /* Wrapper handles reveal; tcard keeps its own rotation transform */
+            <div
+              key={i}
+              className={`reveal-fade d${i + 1}${inView ? ' in-view' : ''}`}
+            >
+              <article className={`tcard tcard--${t.variant}`}>
+                <div>
+                  <div className="tcard__stars" aria-label={`${t.stars} out of 5 stars`}>
+                    {Array.from({ length: t.stars }).map((_, k) => (
+                      <Star key={k} />
+                    ))}
+                  </div>
+                  <p className="tcard__quote">{t.quote}</p>
+                </div>
+                <div className="tcard__byline">
+                  <span className="tcard__emoji" aria-hidden="true">
+                    {t.emoji}
+                  </span>
+                  <span className="tcard__name">{t.name}</span>
+                </div>
+              </article>
             </div>
-            <div className="tcard__byline">
-              <span className="tcard__emoji" aria-hidden="true">
-                {t.emoji}
-              </span>
-              <span className="tcard__name">{t.name}</span>
-            </div>
-          </article>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Testimonials;

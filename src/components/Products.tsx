@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import extraTasksSvg from '../assets/extra-tasks.svg';
 import standardCleaningSvg from '../assets/standard-cleaning.svg';
 import moveinCleaningSvg from '../assets/movein-cleaning.svg';
+import { useInView } from '../hooks/useInView';
 
 type Product = {
   id: 'standard' | 'movein' | 'extra';
@@ -31,33 +32,44 @@ const PRODUCTS: Product[] = [
   },
 ];
 
-export const Products: FC = () => (
-  <section className="products section" id="products">
-    <div className="container">
-      <h2 className="display products__title">Whatever the mess, we&rsquo;ve got it</h2>
-      <div className="products__grid">
-        {PRODUCTS.map((p) => (
-          <article key={p.id} className="product-card">
-            <div className="product-card__body">
-              <h3 className="product-card__title">{p.title}</h3>
-              <p className="product-card__desc">{p.desc}</p>
-              <button className="btn btn-primary btn-sm product-card__cta" type="button">
-                Book now
-              </button>
+export const Products: FC = () => {
+  const [ref, inView] = useInView<HTMLElement>();
+
+  return (
+    <section className="products section" id="products" ref={ref}>
+      <div className="container">
+        <h2 className={`display products__title reveal${inView ? ' in-view' : ''}`}>
+          Whatever the mess, we&rsquo;ve got it
+        </h2>
+        <div className="products__grid">
+          {PRODUCTS.map((p, i) => (
+            <div
+              key={p.id}
+              className={`reveal-wrap reveal d${i + 1}${inView ? ' in-view' : ''}`}
+            >
+              <article className="product-card">
+                <div className="product-card__body">
+                  <h3 className="product-card__title">{p.title}</h3>
+                  <p className="product-card__desc">{p.desc}</p>
+                  <button className="btn btn-primary btn-sm product-card__cta" type="button">
+                    Book now
+                  </button>
+                </div>
+                <div className="product-card__art-wrap">
+                  {p.id === 'extra'
+                    ? <img src={extraTasksSvg} alt="Extra tasks" className="product-card__art" />
+                    : p.id === 'standard'
+                    ? <img src={standardCleaningSvg} alt="Standard cleaning" className="product-card__art" />
+                    : <img src={moveinCleaningSvg} alt="Move-in cleaning" className="product-card__art" />
+                  }
+                </div>
+              </article>
             </div>
-            <div className="product-card__art-wrap">
-              {p.id === 'extra'
-                ? <img src={extraTasksSvg} alt="Extra tasks" className="product-card__art" />
-                : p.id === 'standard'
-                ? <img src={standardCleaningSvg} alt="Standard cleaning" className="product-card__art" />
-                : <img src={moveinCleaningSvg} alt="Move-in cleaning" className="product-card__art" />
-              }
-            </div>
-          </article>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Products;

@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { useInView } from '../hooks/useInView';
 
 type Step = { n: string; title: string; desc: string };
 
@@ -6,7 +7,7 @@ const STEPS: Step[] = [
   {
     n: '1',
     title: 'Tap "Book Now"',
-    desc: 'You\u2019ll be taken straight to our WhatsApp order channel to get started.',
+    desc: 'You’ll be taken straight to our WhatsApp order channel to get started.',
   },
   {
     n: '2',
@@ -20,23 +21,34 @@ const STEPS: Step[] = [
   },
 ];
 
-export const HowItWorks: FC = () => (
-  <section className="how section" id="how">
-    <div className="container">
-      <h2 className="display how__title">How it Works</h2>
-      <div className="how__grid">
-        {STEPS.map((s) => (
-          <div key={s.n} className="step">
-            <div className="step__num">{s.n}</div>
-            <div>
-              <div className="step__title">{s.title}</div>
-              <div className="step__desc">{s.desc}</div>
+export const HowItWorks: FC = () => {
+  const [ref, inView] = useInView<HTMLElement>();
+
+  return (
+    <section className="how section" id="how" ref={ref}>
+      <div className="container">
+        <h2 className={`display how__title reveal${inView ? ' in-view' : ''}`}>
+          How it Works
+        </h2>
+        <div className="how__grid">
+          {STEPS.map((s, i) => (
+            <div
+              key={s.n}
+              className={`reveal-wrap reveal d${i + 1}${inView ? ' in-view' : ''}`}
+            >
+              <div className="step">
+                <div className="step__num">{s.n}</div>
+                <div>
+                  <div className="step__title">{s.title}</div>
+                  <div className="step__desc">{s.desc}</div>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default HowItWorks;

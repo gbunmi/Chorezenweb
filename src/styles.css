@@ -658,3 +658,105 @@ a {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+/* ============================================================
+   Animations & Motion
+   ============================================================ */
+
+/* — Hero entrance — */
+@keyframes heroUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* hero__scene has translateX(-50%) baked in — preserve it in the keyframes */
+@keyframes heroSceneIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(32px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.hero__title {
+  animation: heroUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero__lede {
+  animation: heroUp 0.85s 0.16s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero__ctas {
+  animation: heroUp 0.85s 0.30s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero__scene {
+  animation: heroSceneIn 1s 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* — Gentle float on the hero illustration — */
+@keyframes floatArt {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+.hero__scene-art {
+  animation: floatArt 7s 1.8s ease-in-out infinite;
+}
+
+/* — Scroll reveal: slide + fade — */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity  0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* — Fade-only reveal (items that already carry a transform, e.g. tilt) — */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-fade.in-view {
+  opacity: 1;
+}
+
+/* — Stagger delay helpers — */
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.18s; }
+.d3 { transition-delay: 0.28s; }
+.d4 { transition-delay: 0.38s; }
+
+/* — Grid reveal wrappers (products / steps) — */
+.reveal-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.reveal-wrap > * {
+  flex: 1;
+}
+
+/* — CTA button subtle pulse ring — */
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(249, 95, 19, 0.4); }
+  60%       { box-shadow: 0 0 0 14px rgba(249, 95, 19, 0); }
+}
+.cta .btn-primary {
+  animation: ctaPulse 2.8s 1.2s ease-out infinite;
+}
+
+/* — Reduced-motion safety — */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero__title,
+  .hero__lede,
+  .hero__ctas,
+  .hero__scene,
+  .hero__scene-art,
+  .cta .btn-primary {
+    animation: none;
+  }
+}
