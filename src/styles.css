@@ -281,7 +281,6 @@ a {
   display: flex;
   flex-direction: column;
 }
-/* Hover/tilt handled via JS in ProductCard */
 .product-card__title {
   font-family: var(--font-body);
   font-weight: 700;
