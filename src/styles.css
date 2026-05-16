@@ -665,16 +665,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* — Scroll progress bar — */
-.nav__progress {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  background: var(--orange);
-  transition: width 80ms linear;
-  border-radius: 0 2px 2px 0;
-}
 
 /* — Button ripple on click — */
 .btn {

@@ -3,14 +3,9 @@ import chorezenLogo from '../assets/chorezen-logo.png';
 
 export const Nav: FC = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 8);
-      const total = document.body.scrollHeight - window.innerHeight;
-      setProgress(total > 0 ? (window.scrollY / total) * 100 : 0);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -26,8 +21,6 @@ export const Nav: FC = () => {
           Book now
         </button>
       </div>
-      {/* Scroll progress bar */}
-      <div className="nav__progress" style={{ width: `${progress}%` }} />
     </header>
   );
 };
