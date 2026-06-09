@@ -295,6 +295,10 @@ a {
   color: var(--cocoa-60);
   margin-bottom: 28px;
   max-width: 352px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .product-card__cta {
   align-self: flex-start;
