@@ -310,8 +310,8 @@ a {
 .product-card__art {
   display: block;
   width: auto;
-  height: 70%;
-  max-width: 70%;
+  height: 82%;
+  max-width: 82%;
   pointer-events: none;
 }
 
