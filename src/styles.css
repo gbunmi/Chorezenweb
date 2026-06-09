@@ -301,15 +301,17 @@ a {
 }
 .product-card__art-wrap {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-end;
-  height: 220px;
+  height: 214px;
   overflow: hidden;
+  padding: 0 24px 0 0;
 }
 .product-card__art {
-  width: auto;
-  height: 100%;
   display: block;
+  width: auto;
+  height: 70%;
+  max-width: 70%;
   pointer-events: none;
 }
 
