@@ -305,7 +305,7 @@ a {
   align-items: flex-end;
   height: 214px;
   overflow: hidden;
-  padding: 0 24px 0 0;
+  padding: 0 24px 24px 0;
 }
 .product-card__art {
   display: block;
