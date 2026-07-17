@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+﻿import type { FC } from 'react';
 import { Nav } from './Nav';
 import { Footer } from './Footer';
 
@@ -110,7 +110,7 @@ export const PrivacyPolicy: FC = () => (
           <Section title="12. Contact Us">
             <p>If you have any questions about this Privacy Policy or how we handle your data, please get in touch:</p>
             <ul>
-              <li><strong>WhatsApp:</strong> <a href="https://wa.me/message/44BVXDXZRV2IB1" target="_blank" rel="noopener noreferrer">Chat with us</a></li>
+              <li><strong>WhatsApp:</strong> <a href="https://wa.me/2347044415890" target="_blank" rel="noopener noreferrer">Chat with us</a></li>
             </ul>
             <p>You also have the right to lodge a complaint with the Nigeria Data Protection Commission (NDPC) at <strong>ndpc.gov.ng</strong> if you believe your data has been mishandled.</p>
           </Section>

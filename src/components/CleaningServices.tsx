@@ -13,7 +13,7 @@ import {
 } from '../data/cleaningServices';
 
 const CATEGORIES: ServiceCategory[] = ['standard', 'movein', 'extra'];
-const WA_BASE = 'https://wa.me/message/44BVXDXZRV2IB1';
+const WA_BASE = 'https://wa.me/2347044415890';
 
 const formatPrice = (price: number) =>
   `₦${price.toLocaleString('en-NG')}`;

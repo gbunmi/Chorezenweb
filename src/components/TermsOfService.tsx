@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+﻿import type { FC } from 'react';
 import { Nav } from './Nav';
 import { Footer } from './Footer';
 
@@ -109,7 +109,7 @@ export const TermsOfService: FC = () => (
           <Section title="12. Contact Us">
             <p>If you have any questions about these Terms, please reach out to us:</p>
             <ul>
-              <li><strong>WhatsApp:</strong> <a href="https://wa.me/message/44BVXDXZRV2IB1" target="_blank" rel="noopener noreferrer">Chat with us</a></li>
+              <li><strong>WhatsApp:</strong> <a href="https://wa.me/2347044415890" target="_blank" rel="noopener noreferrer">Chat with us</a></li>
             </ul>
           </Section>
 

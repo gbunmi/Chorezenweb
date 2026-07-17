@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState, type FC } from 'react';
+﻿import { useEffect, useRef, useState, type FC } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import chorezenLogo from '../assets/chorezen-logo-new.png';
 
-const WA = 'https://wa.me/message/44BVXDXZRV2IB1';
+const WA = 'https://wa.me/2347044415890';
 
 export const Nav: FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -66,12 +66,12 @@ export const Nav: FC = () => {
       <header ref={headerRef} className={`nav${scrolled ? ' nav--scrolled' : ''}${open ? ' nav--open' : ''}`}>
         <div className="nav__inner">
 
-          {/* Logo — left column */}
+          {/* Logo â€” left column */}
           <Link className="nav__logo" to="/" onClick={close}>
             <img src={chorezenLogo} alt="Chorezen" className="nav__logo-img" />
           </Link>
 
-          {/* Centered nav links — desktop only */}
+          {/* Centered nav links â€” desktop only */}
           <nav className="nav__links" aria-label="Main navigation">
             {[
               { label: 'Services', to: '/cleaning-services' },
@@ -114,7 +114,7 @@ export const Nav: FC = () => {
         </div>
       </header>
 
-      {/* Drawer rendered via portal — outside nav stacking context */}
+      {/* Drawer rendered via portal â€” outside nav stacking context */}
       {createPortal(drawer, document.body)}
     </>
   );

@@ -1,8 +1,8 @@
-import type { FC } from 'react';
+﻿import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import heroIllustration from '../assets/hero-illustration.svg';
 
-/* ── Sparkle icon ──────────────────────────────────────────────────────── */
+/* â”€â”€ Sparkle icon â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const SparkleWord: FC = () => (
   <span className="sparkle-word">
     sparkle
@@ -17,7 +17,7 @@ const SparkleWord: FC = () => (
   </span>
 );
 
-/* ── Hero ───────────────────────────────────────────────────────────────── */
+/* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 export const Hero: FC = () => (
   <section className="hero" id="top">
     <div className="hero__content">
@@ -40,7 +40,7 @@ export const Hero: FC = () => (
           Book now
         </Link>
         <a
-          href="https://wa.me/message/44BVXDXZRV2IB1"
+          href="https://wa.me/2347044415890"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-ghost btn-sm"

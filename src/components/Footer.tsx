@@ -1,8 +1,8 @@
-import type { FC } from 'react';
+﻿import type { FC } from 'react';
 import footerWordmark from '../assets/footer-wordmark.png';
 import { useInView } from '../hooks/useInView';
 
-const WA = 'https://wa.me/message/44BVXDXZRV2IB1';
+const WA = 'https://wa.me/2347044415890';
 
 type Item = { label: string; href: string; external?: boolean };
 type Column = { heading: string; items: Item[] };
@@ -72,7 +72,7 @@ export const Footer: FC = () => {
             className={`footer__meta reveal-fade${inView ? ' in-view' : ''}`}
             style={{ transitionDelay: '0.25s' }}
           >
-            <span>©2026 Chorezen</span>
+            <span>Â©2026 Chorezen</span>
             <span>...</span>
           </div>
         </div>
