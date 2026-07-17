@@ -98,8 +98,11 @@ const Drawer: FC<{ service: CleaningService | null; onClose: () => void }> = ({
   const fullDescription = activeOption?.fullDescription ?? service?.fullDescription ?? '';
   const included = activeOption?.included ?? service?.included ?? [];
   const purchasedSupplies = activeOption?.purchasedSupplies ?? null;
+  const serviceLabel = service
+    ? `${CATEGORY_LABELS[service.category]} - ${service.title.replace(' Move-in', '')}`
+    : '';
   const waMessage = service
-    ? `Hi Chorezen,\n\nI'd like to book:\n\n• Service: ${service.title}\n\nMy details:\n• Location: __________\n• Preferred date: __________\n• Preferred time: __________`
+    ? `Hi Chorezen,\n\nI'd like to book:\n\n• Service: ${serviceLabel}\n\nMy details:\n• Location: __________\n• Preferred date: __________\n• Preferred time: __________`
     : '';
   const waHref = service ? `${WA_BASE}?text=${encodeURIComponent(waMessage)}` : '#';
 
