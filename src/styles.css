@@ -1575,6 +1575,7 @@ body {
   display: none;
 }
 .svc-tab {
+  flex: 1;
   flex-shrink: 0;
   position: relative;
   padding: 14px 20px;
@@ -2060,6 +2061,25 @@ body {
   }
   .cleaning__body {
     padding: 32px 0 64px;
+  }
+  /* Tabs: remove container padding so tabs span full viewport width */
+  .svc-tabs-wrap .container {
+    padding: 0;
+  }
+  .svc-tab {
+    flex-shrink: 1;
+    min-width: 0;
+    padding: 14px 8px;
+    font-size: 13px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .svc-tab:first-child {
+    padding-left: 8px;
+  }
+  .svc-tab:first-child::after {
+    left: 8px;
   }
   /* svc-tabs-wrap top is driven by --nav-height set dynamically */
   .svc-drawer {
