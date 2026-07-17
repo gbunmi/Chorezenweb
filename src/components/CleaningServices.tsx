@@ -38,19 +38,6 @@ const WhatsAppIcon: FC = () => (
   </svg>
 );
 
-const BulletIcon: FC = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-    style={{ flexShrink: 0 }}
-  >
-    <circle cx="8" cy="8" r="3" fill="var(--orange)" opacity="0.5" />
-  </svg>
-);
-
 const CheckIcon: FC = () => (
   <svg
     width="16"
@@ -271,25 +258,6 @@ const Drawer: FC<{ service: CleaningService | null; onClose: () => void }> = ({
 };
 
 // ── Service Card ─────────────────────────────────────────────────────────────
-
-const ArrowIcon: FC = () => (
-  <svg
-    className="svc-card__arrow"
-    width="15"
-    height="15"
-    viewBox="0 0 16 16"
-    fill="none"
-    aria-hidden="true"
-  >
-    <path
-      d="M3 8h10M9 4l4 4-4 4"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 const ServiceCard: FC<{
   service: CleaningService;
