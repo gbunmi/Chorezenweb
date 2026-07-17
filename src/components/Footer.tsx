@@ -1,47 +1,84 @@
 import type { FC } from 'react';
 import footerWordmark from '../assets/footer-wordmark.png';
+import { useInView } from '../hooks/useInView';
 
-type Column = { heading: string; items: string[] };
+const WA = 'https://wa.me/message/44BVXDXZRV2IB1';
+
+type Item = { label: string; href: string; external?: boolean };
+type Column = { heading: string; items: Item[] };
 
 const COLUMNS: Column[] = [
   {
     heading: 'Company',
-    items: ['About', 'Work with us', 'Privacy Policy', 'Terms of Service'],
+    items: [
+      { label: 'Become a sparkler', href: WA, external: true },
+      { label: 'Privacy Policy',   href: '/privacy' },
+      { label: 'Terms of Service', href: '/terms' },
+    ],
   },
   {
     heading: 'Contact',
-    items: ['About', 'Work with us', 'Privacy Policy', 'Terms of Service'],
+    items: [
+      { label: 'Email', href: '#' },
+      { label: 'Phone', href: '#' },
+    ],
   },
   {
     heading: 'Socials',
-    items: ['Instagram', 'TikTok', 'Linkedin', 'Twitter/X'],
+    items: [
+      { label: 'Instagram',  href: '#' },
+      { label: 'TikTok',     href: '#' },
+      { label: 'Twitter/X',  href: '#' },
+    ],
   },
 ];
 
-export const Footer: FC = () => (
-  <footer className="footer">
-    <div className="footer__panel">
-      <div className="footer__columns">
-        {COLUMNS.map((c) => (
-          <div key={c.heading} className="footer__col">
-            <h4 className="footer__col-heading">{c.heading}</h4>
-            <ul>
-              {c.items.map((i) => (
-                <li key={i}><a href="#">{i}</a></li>
-              ))}
-            </ul>
+export const Footer: FC = () => {
+  const [ref, inView] = useInView<HTMLElement>();
+
+  return (
+    <footer className="footer" ref={ref}>
+      <div className="footer__panel">
+        <div className="footer__columns">
+          {COLUMNS.map((c, i) => (
+            <div
+              key={c.heading}
+              className={`footer__col reveal-fade d${i + 1}${inView ? ' in-view' : ''}`}
+            >
+              <h4 className="footer__col-heading">{c.heading}</h4>
+              <ul>
+                {c.items.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="footer__bottom">
+          <img
+            src={footerWordmark}
+            alt="Chorezen"
+            className={`footer__wordmark-img reveal${inView ? ' in-view' : ''}`}
+            style={{ transitionDelay: '0.15s' }}
+          />
+          <div
+            className={`footer__meta reveal-fade${inView ? ' in-view' : ''}`}
+            style={{ transitionDelay: '0.25s' }}
+          >
+            <span>©2026 Chorezen</span>
+            <span>...</span>
           </div>
-        ))}
-      </div>
-      <div className="footer__bottom">
-        <img src={footerWordmark} alt="Chorezen" className="footer__wordmark-img" />
-        <div className="footer__meta">
-          <span>©2026 Chorezen Ltd</span>
-          <span>...</span>
         </div>
       </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 export default Footer;

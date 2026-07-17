@@ -60,7 +60,9 @@ export const Testimonials: FC = () => {
     <section className="testimonials section" id="testimonials" ref={ref}>
       <div className="container">
         <h2 className={`display testimonials__title reveal${inView ? ' in-view' : ''}`}>
-          Loved by people who use us
+          Loved by people{' '}
+          <br className="br-mobile" />
+          who use us
         </h2>
         <div className="testimonials__row">
           {TESTIMONIALS.map((t, i) => (

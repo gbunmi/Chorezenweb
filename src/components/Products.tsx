@@ -1,7 +1,8 @@
 import type { FC } from 'react';
-import extraTasksSvg from '../assets/extra-tasks.svg';
-import standardCleaningSvg from '../assets/standard-cleaning.svg';
-import moveinCleaningSvg from '../assets/movein-cleaning.svg';
+import { Link } from 'react-router-dom';
+import standardCleaningImg from '../assets/standard-cleaning-new.png';
+import moveinCleaningImg from '../assets/movein-cleaning-new.png';
+import extraTasksImg from '../assets/extra-tasks-new.png';
 import { useInView } from '../hooks/useInView';
 
 type Product = {
@@ -29,15 +30,15 @@ const PRODUCTS: Product[] = [
 ];
 
 const ART: Record<Product['id'], string> = {
-  standard: standardCleaningSvg,
-  movein: moveinCleaningSvg,
-  extra: extraTasksSvg,
+  standard: standardCleaningImg,
+  movein: moveinCleaningImg,
+  extra: extraTasksImg,
 };
 
 const ALT: Record<Product['id'], string> = {
-  standard: 'Standard cleaning',
-  movein: 'Move-in cleaning',
-  extra: 'Extra tasks',
+  standard: 'Standard cleaning illustration',
+  movein: 'Move-in cleaning illustration',
+  extra: 'Extra tasks illustration',
 };
 
 const ProductCard: FC<{ p: Product; delay: number; inView: boolean }> = ({ p, delay, inView }) => (
@@ -49,11 +50,11 @@ const ProductCard: FC<{ p: Product; delay: number; inView: boolean }> = ({ p, de
       <div className="product-card__body">
         <h3 className="product-card__title">{p.title}</h3>
         <p className="product-card__desc">{p.desc}</p>
-        <button className="btn btn-primary btn-sm product-card__cta" type="button">
+        <Link to="/cleaning-services" className="btn btn-primary btn-sm product-card__cta">
           Book now
-        </button>
+        </Link>
       </div>
-      <div className="product-card__art-wrap">
+      <div className={`product-card__art-wrap product-card__art-wrap--${p.id}`}>
         <img src={ART[p.id]} alt={ALT[p.id]} className="product-card__art" />
       </div>
     </article>
@@ -67,7 +68,9 @@ export const Products: FC = () => {
     <section className="products section" id="products" ref={ref}>
       <div className="container">
         <h2 className={`display products__title reveal${inView ? ' in-view' : ''}`}>
-          Whatever the mess, we&rsquo;ve got it
+          Whatever the mess,{' '}
+          <br className="br-mobile" />
+          we&rsquo;ve got it
         </h2>
         <div className="products__grid">
           {PRODUCTS.map((p, i) => (
