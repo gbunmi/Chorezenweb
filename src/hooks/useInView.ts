@@ -14,6 +14,14 @@ export function useInView<T extends Element>(
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // If already in the viewport on mount, reveal immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setInView(true);
+      return;
+    }
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
